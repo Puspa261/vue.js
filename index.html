@@ -10,7 +10,9 @@
 
 <body>
     <div id="app">
-        {{ message }}
+        <button @click="kurang()">-</button>
+        {{ count }}
+        <button @click="tambah()">+</button>
     </div>
     <script>
         const { createApp } = Vue
@@ -18,7 +20,15 @@
         createApp({
             data() {
                 return {
-                    message : 'Hello, Puspa'
+                    count : 0
+                }
+            }, 
+            methods: {
+                tambah(){
+                    this.count++
+                },
+                kurang() {
+                    this.count--
                 }
             }
         }).mount('#app')
