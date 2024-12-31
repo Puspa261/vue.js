@@ -10,8 +10,8 @@
 
 <body>
     <div id="app">
-        <ul v-for="nomor in 5">
-            <li> {{ nomor }} </li>
+        <ul v-for="a in buah">
+            <li> {{ a }} </li>
         </ul>
     </div>
 
@@ -21,12 +21,7 @@
         createApp({
             data() {
                 return {
-                    lampu: false
-                }
-            },
-            methods: {
-                saklar() {
-                    this.lampu = !this.lampu
+                    buah: ['apel', 'mangga', 'jeruk', 'nanas']
                 }
             }
         }).mount('#app')
