@@ -10,8 +10,8 @@
 
 <body>
     <div id="app">
-        <ul v-for="( a, nomor ) in buah">
-            <li> {{ a }} {{ nomor }} <button @click="hapus(index)">hapus</button></li>
+        <ul v-for="data in biodata">
+            <li> nama : {{ data.nama }} <br> umur : {{ data.umur }} tahun</li>
         </ul>
     </div>
 
@@ -21,12 +21,11 @@
         createApp({
             data() {
                 return {
-                    buah: ['apel', 'mangga', 'jeruk', 'nanas']
-                }
-            }, 
-            methods: {
-                hapus(index) {
-                    this.buah.splice(index, 1)
+                    biodata: [
+                        { nama: 'Puspa', umur: 21 },
+                        { nama: 'Ratu', umur: 17 },
+                        { nama: 'Sultan', umur: 14 }
+                    ]
                 }
             }
         }).mount('#app')
