@@ -10,8 +10,9 @@
 
 <body>
     <div id="app">
-        <button @click="saklar">Action Lampu</button>
-        <div v-show="lampu">Lampu Hidup</div>
+        <ul v-for="nomor in 5">
+            <li> {{ nomor }} </li>
+        </ul>
     </div>
 
     <script>
