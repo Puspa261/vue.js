@@ -10,16 +10,8 @@
 
 <body>
     <div id="app">
-        <span v-if="nilai >= 80 && nilai <= 100">
-            Predikat A
-        </span>
-        <span v-else-if="nilai >= 60 && nilai <80">
-            Predikat B
-        </span>
-        <span v-else-if="nilai >= 40 && nilai <60">
-            Predikat C
-        </span>
-        <span v-else>Nilai Salah</span>
+        <button @click="saklar">Action Lampu</button>
+        <div v-show="lampu">Lampu Hidup</div>
     </div>
 
     <script>
@@ -28,7 +20,12 @@
         createApp({
             data() {
                 return {
-                    nilai: 50
+                    lampu: false
+                }
+            },
+            methods: {
+                saklar() {
+                    this.lampu = !this.lampu
                 }
             }
         }).mount('#app')
