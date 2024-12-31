@@ -10,8 +10,10 @@
 
 <body>
     <div id="app">
-        <ul v-for="data in biodata">
-            <li> nama : {{ data.nama }} <br> umur : {{ data.umur }} tahun</li>
+        <ul v-for="(data, nomor) in biodata">
+            <li> nama : {{ data.nama }} <br> umur : {{ data.umur }} tahun
+                <button @click="hapus(nomor)">hapus</button>
+            </li>
         </ul>
     </div>
 
@@ -26,6 +28,11 @@
                         { nama: 'Ratu', umur: 17 },
                         { nama: 'Sultan', umur: 14 }
                     ]
+                }
+            },
+            methods: {
+                hapus(nomor) {
+                    this.biodata.splice(nomor, 1)
                 }
             }
         }).mount('#app')
