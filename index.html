@@ -10,14 +10,9 @@
 
 <body>
     <div id="app">
-        <button @click="kurang()">-</button>
-        {{ count }}
-        <button @click="tambah()">+</button>
-
-        <br>
-        <div v-text="message"></div>
-        <div v-html="contoh"></div>
+        <div v-if="status"> {{ message }} </div>
     </div>
+
     <script>
         const { createApp } = Vue
 
@@ -26,7 +21,7 @@
                 return {
                     count: 0,
                     message: 'Aku Cantik',
-                    contoh : '<b>Puspa</b>'
+                    status: true
                 }
             },
             methods: {
