@@ -10,8 +10,8 @@
 
 <body>
     <div id="app">
-        <ul v-for="( a, index ) in buah">
-            <li> {{ a }} {{ index }} </li>
+        <ul v-for="( a, nomor ) in buah">
+            <li> {{ a }} {{ nomor }} <button @click="hapus(index)">hapus</button></li>
         </ul>
     </div>
 
@@ -22,6 +22,11 @@
             data() {
                 return {
                     buah: ['apel', 'mangga', 'jeruk', 'nanas']
+                }
+            }, 
+            methods: {
+                hapus(index) {
+                    this.buah.splice(index, 1)
                 }
             }
         }).mount('#app')
