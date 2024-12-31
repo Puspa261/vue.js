@@ -9,12 +9,37 @@
 </head>
 
 <body>
+
     <div id="app">
-        <ul v-for="(data, nomor) in biodata">
-            <li> nama : {{ data.nama }} <br> umur : {{ data.umur }} tahun
-                <button @click="hapus(nomor)">hapus</button>
-            </li>
+        <b>Soal No. 1</b>
+        <ul v-for="fruit in buah">
+            <li> {{ fruit }} </li>
         </ul>
+
+        <br>
+        <b>Soal No. 2</b>
+        <p v-text="teks"></p>
+        <p v-html="teks2"></p>
+
+        <br>
+        <b>Soal No. 3</b>
+        <div v-for="data in biodata">
+            Nama : {{ data.nama }},
+            Usia : {{ data.usia }},
+            Status :
+            <span v-if="data.usia < 18"> Anak-Anak </span>
+            <span v-else-if="data.usia >= 18 && data.usia <= 60"> Dewasa </span>
+            <span v-else> Melebihi Batas Usia </span>
+        </div>
+
+        <br>
+        <b>Soal No. 4</b><br>
+        <button @click="Siswa()">Siswa</button>
+        <div v-show="kondisiSiswa">
+            <ul v-for="data in siswa">
+                <li> {{ data }} </li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -23,16 +48,23 @@
         createApp({
             data() {
                 return {
+                    buah: ['Mangga', 'Jeruk', 'Lemon', 'Rambutan'],
+                    teks: 'Nama Saya Puspa',
+                    teks2: '<i>Puspa Khairunnisa</i>',
                     biodata: [
-                        { nama: 'Puspa', umur: 21 },
-                        { nama: 'Ratu', umur: 17 },
-                        { nama: 'Sultan', umur: 14 }
-                    ]
+                        { nama: 'Ayu', usia: 26 },
+                        { nama: 'Puspa', usia: 21 },
+                        { nama: 'Ratu', usia: 17 },
+                        { nama: 'Sultan', usia: 10 },
+                        { nama: 'Uknown', usia: 190 }
+                    ],
+                    siswa: ['Intan', 'Ayu', 'Puspa', 'Ratu', 'Sultan'],
+                    kondisiSiswa: false
                 }
             },
             methods: {
-                hapus(nomor) {
-                    this.biodata.splice(nomor, 1)
+                Siswa() {
+                    this.kondisiSiswa = !this.kondisiSiswa
                 }
             }
         }).mount('#app')
