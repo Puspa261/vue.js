@@ -10,7 +10,17 @@
 
 <body>
     <div id="app">
-        <input @keydown.enter="nama('Puspa')"></input>
+        <!-- prevent default -->
+        <form method="post" action="action.html" v-on:submit.prevent>
+            <input type="text">
+            <input type="submit">
+        </form><br><br>
+
+        <!-- shorthand -->
+        <form method="post" action="action.html" @submit.prevent>
+            <input type="text">
+            <input type="submit">
+        </form><br><br>
     </div>
 
     <script>
