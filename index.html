@@ -10,17 +10,7 @@
 
 <body>
     <div id="app">
-        <!-- menggunakan v-on:click -->
-        <button v-on:click="angka--">-</button>
-
-        <span> {{ angka }} </span>
-
-        <!-- menggunakan @click -->
-        <button @click="angka++">+</button>
-
-        <br>
-        <!-- menggunakan parameter -->
-        <button @click="nama('Puspa')">Nama</button>
+        <input @keydown.enter="nama('Puspa')"></input>
     </div>
 
     <script>
@@ -29,7 +19,7 @@
         createApp({
             data() {
                 return {
-                    angka: 0
+
                 }
             },
             methods: {
