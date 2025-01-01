@@ -14,9 +14,11 @@
             name : {{ user.name }}
         </div>
         <div>
-            <img v-bind:src="user.image" alt="foto" height="100px">
+            <img v-bind:src="user.image" v-bind:style="{height: styleWidth}" v-bind:alt="'image of ' + user.name">
+            <br>
+
             <!-- shorthand -->
-            <img :src="user.image" alt="foto" height="100px">
+            <img :src="user.image" :style="{height: styleWidth}" :alt="'gambar dari ' + user.name">
         </div>
     </div>
 
@@ -29,7 +31,8 @@
                     user: {
                         name: 'puspa',
                         image: 'https://asset-a.grid.id/crop/0x0:0x0/x/photo/2019/09/07/1372274053.jpg'
-                    }
+                    },
+                    styleWidth: '200px'
                 }
             }
         }).mount('#app')
