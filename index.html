@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .text {
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <div>
+        <div v-bind:class="selectClass">
             name : {{ user.name }}
         </div>
         <div>
@@ -32,7 +38,8 @@
                         name: 'puspa',
                         image: 'https://asset-a.grid.id/crop/0x0:0x0/x/photo/2019/09/07/1372274053.jpg'
                     },
-                    styleWidth: '200px'
+                    styleWidth: '200px',
+                    selectClass: 'text'
                 }
             }
         }).mount('#app')
