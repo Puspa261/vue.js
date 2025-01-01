@@ -10,17 +10,14 @@
 
 <body>
     <div id="app">
-        <!-- prevent default -->
-        <form method="post" action="action.html" v-on:submit.prevent>
-            <input type="text">
-            <input type="submit">
-        </form><br><br>
-
-        <!-- shorthand -->
-        <form method="post" action="action.html" @submit.prevent>
-            <input type="text">
-            <input type="submit">
-        </form><br><br>
+        <div>
+            name : {{ user.name }}
+        </div>
+        <div>
+            <img v-bind:src="user.image" alt="foto" height="100px">
+            <!-- shorthand -->
+            <img :src="user.image" alt="foto" height="100px">
+        </div>
     </div>
 
     <script>
@@ -29,13 +26,10 @@
         createApp({
             data() {
                 return {
-
-                }
-            },
-            methods: {
-                nama(Name) {
-                    // alert(Name),
-                    alert('Nama saya ' + Name)
+                    user: {
+                        name: 'puspa',
+                        image: 'https://asset-a.grid.id/crop/0x0:0x0/x/photo/2019/09/07/1372274053.jpg'
+                    }
                 }
             }
         }).mount('#app')
