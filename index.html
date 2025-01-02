@@ -24,20 +24,43 @@
             <label for="username"> Username : </label>
             <input type="text" id="username" v-model="username">
             <br>
-        </div>
-
-        <br>
+        </div><br>
 
         <div>
             <label for="address"> Address : </label>
-            <textarea name="" id="address" cols="10" rows="10" v-model="address"></textarea>
-        </div>
+            <textarea name="" id="address" cols="22" rows="10" v-model="address"></textarea>
+        </div><br>
 
-        <br>
+        <!-- radio button -->
+        <div>
+            <label> Gender </label>
+            <input type="radio" value="Pria" v-model="gender"> Pria
+            <input type="radio" value="Wanita" v-model="gender"> Wanita
+        </div><br>
+
+        <!-- checkbox -->
+        <div>
+            <label> Hobi </label><br>
+            <input type="checkbox" value="Sepak Bola" v-model="hobi"> Sepak Bola
+            <input type="checkbox" value="Voli" v-model="hobi"> Voli
+            <input type="checkbox" value="Renang" v-model="hobi"> Renang
+        </div><br>
+
+        <div>
+            <label> Role </label>
+            <select name="role" id="role" v-model="role">
+                <option value="Admin">Admin</option>
+                <option value="Staff">Staff</option>
+                <option value="Satpam">Satpam</option>
+            </select>
+        </div><br>
 
         <div>
             Username : {{ username }} <br>
-            Address : {{ address }}
+            Address : {{ address }} <br>
+            Gender : {{ gender }} <br>
+            Hobi : <span v-for="a in hobi"> {{ a }}, </span> <br>
+            Role : {{ role }}
         </div>
     </div>
 
@@ -48,7 +71,10 @@
             data() {
                 return {
                     username: '',
-                    address: ''
+                    address: '',
+                    gender: '',
+                    hobi: [],
+                    role: ''
                 }
             }
         }).mount('#app')
