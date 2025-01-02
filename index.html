@@ -11,20 +11,33 @@
         .text {
             color: blue;
         }
+
+        #id {
+            color: brown;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div v-bind:class="selectClass">
-            name : {{ user.name }}
-        </div>
         <div>
-            <img v-bind:src="user.image" v-bind:style="{height: styleWidth}" v-bind:alt="'image of ' + user.name">
+            <label for="username"> Username : </label>
+            <input type="text" id="username" v-model="username">
             <br>
+        </div>
 
-            <!-- shorthand -->
-            <img :src="user.image" :style="{height: styleWidth}" :alt="'gambar dari ' + user.name">
+        <br>
+
+        <div>
+            <label for="address"> Address : </label>
+            <textarea name="" id="address" cols="10" rows="10" v-model="address"></textarea>
+        </div>
+
+        <br>
+
+        <div>
+            Username : {{ username }} <br>
+            Address : {{ address }}
         </div>
     </div>
 
@@ -34,12 +47,8 @@
         createApp({
             data() {
                 return {
-                    user: {
-                        name: 'puspa',
-                        image: 'https://asset-a.grid.id/crop/0x0:0x0/x/photo/2019/09/07/1372274053.jpg'
-                    },
-                    styleWidth: '200px',
-                    selectClass: 'text'
+                    username: '',
+                    address: ''
                 }
             }
         }).mount('#app')
