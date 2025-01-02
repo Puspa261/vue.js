@@ -11,8 +11,9 @@
 <body>
     <div id="app">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="message">
-        <label for="username" v-if="error">Username min.8 karakter</label>
+        <input type="password" id="username" v-model="password">
+        <input type="password" id="retypePassword" v-model="retypePassword"><br>
+        <label for="retypePassword" v-if="error">Password Harus Sama</label>
     </div>
 
     <script>
@@ -21,13 +22,14 @@
         createApp({
             data() {
                 return {
-                    message: '',
+                    password: '',
+                    retypePassword: '',
                     error: false
                 }
             },
             watch: {
-                message(value) {
-                    if (value.length < 8) {
+                retypePassword() {
+                    if (this.password != this.retypePassword) {
                         this.error = true
                     } else {
                         this.error = false
