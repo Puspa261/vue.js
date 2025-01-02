@@ -10,7 +10,9 @@
 
 <body>
     <div id="app">
-        <input type="text" v-model="message">
+        <label for="username">Username</label>
+        <input type="text" id="username" v-model="message">
+        <label for="username" v-if="error">Username min.8 karakter</label>
     </div>
 
     <script>
@@ -19,12 +21,17 @@
         createApp({
             data() {
                 return {
-                    message: ''
+                    message: '',
+                    error: false
                 }
             },
             watch: {
-                message() {
-                    console.log("halo puspa");
+                message(value) {
+                    if (value.length < 8) {
+                        this.error = true
+                    } else {
+                        this.error = false
+                    }
 
                 }
             }
