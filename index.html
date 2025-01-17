@@ -5,36 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
+    <div id="app">
 
+        <!-- ref : mirip seperti memberikan sebuah "nama" atau "label" pada elemen -->
+        <input type="text" value="Contoh" ref="inputan"><br><br>
+
+        <input type="text" :value="count" ref="hitungan">
+        <button @click="count++"> Add </button>
+    </div>
 
     <script>
+        const { createApp } = Vue
 
-        function isEven(number) {
-            if (number % 2 == 0) {
-                return "Bilangan Genap";
-            } else {
-                return "Bilangan Ganjil";
+        createApp({
+            data() {
+                return {
+                    message: 'hello world',
+                    count: 0,
+                }
+            },
+
+            // Properti gak dikenali karena belum di initialize
+            beforeCreate() {
+                console.log(`before create : ${this.message}`);
+            },
+
+            // Logic sebaiknya dilakukan disini
+            created() {
+                console.log(`create : ${this.message}`);
+
+            },
+
+            // Belum kenal DOM
+            beforeMount() {
+                console.log(`before mount : ${this.$refs.inputan}`);
+            },
+
+            // Udah kenal DOM
+            mounted() {
+                console.log(`mount : ${this.$refs.inputan.value}`);
+            },
+
+            // Melakukan sesuatu ketika data belum berubah
+            beforeUpdate() {
+                alert(`${this.$refs.hitungan.value}`);
+            },
+
+            // Melakukan sesuatu saat data berubah
+            updated() {
+                console.log(`${this.$refs.hitungan.value}`);
             }
-        }
-
-        function luasPersegi(sisi) {
-            let luas = sisi * sisi;
-            return luas;
-        }
-
-        function reverseString(kalimat) {
-            return kalimat.split('').reverse().join('');
-        }
-
-        console.log("Hello World");
-        console.log(isEven(3));
-        console.log(luasPersegi(5));
-        console.log(reverseString("Puspa"));
-
-
+        }).mount('#app')
     </script>
 </body>
 
